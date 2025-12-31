@@ -1,0 +1,71 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom sticky-top">
+  <div class="container-fluid">
+
+    <!-- Brand -->
+    <a class="navbar-brand" href="/listings">
+      <i class="fa-solid fa-house" style="color: #ff385c;"></i>
+    </a>
+
+    <!-- Toggle Button -->
+    <button class="navbar-toggler" type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#mainNavbar"
+      aria-controls="mainNavbar"
+      aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Collapsible Content -->
+    <div class="collapse navbar-collapse" id="mainNavbar">
+
+      <!-- Left Links -->
+      <ul class="navbar-nav me-lg-3 mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/listings">Explore</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/listings/new">Become a host</a>
+        </li>
+      </ul>
+
+      <!-- Search (center on desktop, full width on mobile) -->
+      <form action="/listings" method="GET"
+        class="d-flex flex-grow-1 mx-lg-3 mb-2 mb-lg-0">
+        <input
+          class="form-control me-2 rounded-pill"
+          type="search"
+          name="search"
+          placeholder="Search by city, country..."
+        />
+        <button class="btn btn-outline-danger rounded-pill" type="submit">
+          Search
+        </button>
+      </form>
+
+      <!-- Right Auth -->
+      <ul class="navbar-nav ms-lg-auto text-center">
+        <% if(!currUser) { %>
+          <li class="nav-item">
+            <a class="nav-link" href="/signup"><b>Signup</b></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/login"><b>Login</b></a>
+          </li>
+        <% } %>
+
+        <% if(currUser) { %>
+          <li class="nav-item mb-2 mb-lg-0">
+            <span class="nav-link border border-success rounded-pill px-3">
+              <%= currUser.username %>
+            </span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout"><b>Log Out</b></a>
+          </li>
+        <% } %>
+      </ul>
+
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,273 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<style>
+  /* horizontal scroll container */
+  .scroll-container {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding-bottom: 10px;
+  }
+
+  /* Hide scrollbar */
+  .scroll-container::-webkit-scrollbar {
+    display: none;
+  }
+  .scroll-container {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Card sizing */
+  .property-card {
+    min-width: 200px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .property-card img {
+    height: 180px;
+    object-fit: cover;
+    border-radius: 14px;
+  }
+
+  .badge-fav {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 10;
+  }
+
+  /* Responsive image height */
+  .carousel-item img {
+    height: 70vh;
+    object-fit: cover;
+  }
+
+  @media (max-width: 768px) {
+    .carousel-item img {
+      height: 35vh;
+    }
+  }
+</style>
+
+<div
+  id="carouselExampleDark"
+  class="carousel carousel-dark slide"
+  data-bs-ride="carousel"
+  data-bs-interval="3000"
+  data-bs-pause="hover"
+  data-bs-wrap="true"
+>
+  <!-- Indicators -->
+  <div class="carousel-indicators">
+    <button
+      type="button"
+      data-bs-target="#carouselExampleDark"
+      data-bs-slide-to="0"
+      class="active"
+      aria-current="true"
+    ></button>
+    <button
+      type="button"
+      data-bs-target="#carouselExampleDark"
+      data-bs-slide-to="1"
+    ></button>
+    <button
+      type="button"
+      data-bs-target="#carouselExampleDark"
+      data-bs-slide-to="2"
+    ></button>
+  </div>
+
+  <!-- Slides -->
+  <div class="carousel-inner rounded">
+    <div class="carousel-item active">
+      <img
+        src="https://imgs.search.brave.com/KHpEEGZslzQvA0UVExYJ2TPDcHDYVMUtLqNTrGHw_OI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/b2hvdGVsc2luZGlh/LmNvbS9wdW5lL2lt/YWdlcy83NzRmMzBj/ZDI4YTA1Y2M4OWQ1/NDA2YjE5ZTJiZWI5/ZC5qcGc"
+        class="d-block w-100"
+        alt="Slide 1"
+      />
+      <div class="carousel-caption d-none d-md-block"></div>
+    </div>
+
+    <div class="carousel-item">
+      <img
+        src="https://imgs.search.brave.com/DZwUsm_8q-R3qKIo8MdXl3Y9uHtN8AGLs35TkvWP9dc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS1jZG4udHJpcGFk/dmlzb3IuY29tL21l/ZGlhL3Bob3RvLW8v/MmUvMmYvMWEvZTgv/aG90ZWwtZmFjYWRl/LmpwZw"
+        class="d-block w-100"
+        alt="Slide 2"
+      />
+      <div class="carousel-caption d-none d-md-block"></div>
+    </div>
+
+    <div class="carousel-item">
+      <img
+        src="https://imgs.search.brave.com/lQEaTPuDxYZ-H05Eby7PghxIIoVAhqq6C0dZ5IDvh8w/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTQx/ODcwMTYxOS9waG90/by9ob3RlbC1zaWdu/LW9uLWJ1aWxkaW5n/LWZhY2FkZS1pbi1j/aXR5LWJ1c2luZXNz/LXRyYXZlbC1hbmQt/dG91cmlzbS5qcGc_/cz02MTJ4NjEyJnc9/MCZrPTIwJmM9VzlV/Y1pUWW8zZjhmVGFp/VV80eHFmVlNCT1FS/bmEtUG0tUHJ3M2s1/NGt5TT0"
+        class="d-block w-100"
+        alt="Slide 3"
+      />
+      <div class="carousel-caption d-none d-md-block"></div>
+    </div>
+  </div>
+  <!-- Controls -->
+  <button
+    class="carousel-control-prev"
+    type="button"
+    data-bs-target="#carouselExampleDark"
+    data-bs-slide="prev"
+  >
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+
+  <button
+    class="carousel-control-next"
+    type="button"
+    data-bs-target="#carouselExampleDark"
+    data-bs-slide="next"
+  >
+    <span class="carousel-control-next-icon"></span>
+  </button>
+</div>
+<br />
+<a href="http://localhost:8080/listings" class="text-decoration-none text-black">
+<div class="container my-4">
+  <h5 class="fw-semibold mb-3">Popular homes Mumbai</h5>
+  <div class="scroll-container" id="scrollContainer">
+    <!-- Card 1 -->
+    <div class="card property-card position-relative">
+      <span class="badge bg-light text-dark badge-fav">Guest favourite</span>
+      <img
+        src="https://imgs.search.brave.com/R-GO1uHsxbj1KatlzdhzLaBY6lXlD_Vw5BOyWpOpgRM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9hdy1k/LnRyaXBjZG4uY29t/L2ltYWdlcy8wMjIw/djEyMDAwbTZzYXRu/NThGODBfV181MDBf/NDAwX1I1LndlYnA_/ZGVmYXVsdD0x"
+        class="card-img-top"
+      />
+      <div class="card-body px-0">
+        <h6 class="mb-1">Fairmont Mumbai Hotels in Mumbai</h6>
+        <small class="text-muted"> ₹7,000 for 2 nights · ⭐ 4 </small>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card property-card position-relative">
+      <span class="badge bg-light text-dark badge-fav">Guest favourite</span>
+      <img
+        src="https://imgs.search.brave.com/SB2XR9LTH6HNwbHjhsvds8Gul1wlIngO4KAirAnGT1U/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZi5i/c3RhdGljLmNvbS94/ZGF0YS9pbWFnZXMv/aG90ZWwvc3F1YXJl/NjAwLzM0MTY2ODQ2/LndlYnA_az04ZTc3/MzM1MDVhYWZiODQ5/ZmY2ODE2MDJiYjlj/MjdjYTk0MTgwYWI4/ODY0NDNmYzliNzRl/OWZhMjRiZjhjNmJl/Jm89"
+        class="card-img-top"
+      />
+      <div class="card-body px-0">
+        <h6 class="mb-1">Hotel Suba Palace Near Gateway of India, hotel in Mumbai</h6>
+        <small class="text-muted"> ₹5,421 for 2 nights · ⭐ 5 </small>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card property-card position-relative">
+      <span class="badge bg-light text-dark badge-fav">Guest favourite</span>
+      <img
+        src="https://imgs.search.brave.com/HBBPmrxnFLS-_pi3PiVl0alAKno-VcYfFuF3IqLOjdM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5lYXNlbXl0cmlw/LmNvbS9tZWRpYS9I/b3RlbC9TSEwtMjAw/MzYxNjM1NDE2OC9F/eHRlcm5hbC9FeHRl/cm5hbDZQSFBWUS5q/cGc"
+        class="card-img-top"
+      />
+      <div class="card-body px-0">
+        <h6 class="mb-1">Royal Tulip Navi Mumbai,Kharghar,5 star</h6>
+        <small class="text-muted"> ₹9,953 for 2 nights · ⭐ 5 </small>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="card property-card position-relative">
+      <span class="badge bg-light text-dark badge-fav">Guest favourite</span>
+      <img
+        src="https://imgs.search.brave.com/dO7p4iGI0vSVjhL3KkB91kPlvVyRUvQslMcsg_GuZKs/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9hay1k/LnRyaXBjZG4uY29t/L2ltYWdlcy8wNTgy/ZzEyMDAwbzBxaWJk/djEwOTdfV181MDBf/NDAwX1I1LndlYnA"
+        class="card-img-top"
+      />
+      <div class="card-body px-0">
+        <h6 class="mb-1">Hilton Mumbai International Airport Hotels in Mumbai</h6>
+        <small class="text-muted"> ₹7,989 for 2 nights · ⭐ 4 </small>
+      </div>
+    </div>
+  </div>
+</div>
+</a>
+<br />
+<a href="http://localhost:8080/listings" class="text-decoration-none text-black">
+<div class="container my-4">
+  <h5 class="fw-semibold mb-3">Popular homes in North Goa</h5>
+  <div class="scroll-container" id="scrollContainer">
+    <!-- Card 1 -->
+    <div class="card property-card position-relative">
+      <span class="badge bg-light text-dark badge-fav">Guest favourite</span>
+      <img
+        src="https://imgs.search.brave.com/K_2g1Iu_aaYtE0PrulEMB4A0eTgovsNS-2xBuiD-kEY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Z2xvYmFsLWdhbGxp/dmFudGluZy5jb20v/d3AtY29udGVudC91/cGxvYWRzLzIwMTcv/MTEvdGFqLWZvcnQt/YWd1YWRhLTItMTAy/NHg2ODMuanBn"
+        class="card-img-top"
+      />
+      <div class="card-body px-0">
+        <h6 class="mb-1">The Taj in Candolim is one of the most popular luxury hotels</h6>
+        <small class="text-muted"> ₹7,329 for 2 nights · ⭐ 5 </small>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card property-card position-relative">
+      <span class="badge bg-light text-dark badge-fav">Guest favourite</span>
+      <img
+        src="https://imgs.search.brave.com/mUNJnA2_I3Y7-tLs2Jamh1663VlAyYkkkTnDy1T4TKU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Z2xvYmFsLWdhbGxp/dmFudGluZy5jb20v/d3AtY29udGVudC91/cGxvYWRzLzIwMTcv/MTEvYWxpbGEtZGl3/YS1wb29sLTItMTAy/NHg2ODMuanBn"
+        class="card-img-top"
+      />
+      <div class="card-body px-0">
+        <h6 class="mb-1">one of the most popular luxury hotels in goa</h6>
+        <small class="text-muted"> ₹6,421 for 2 nights · ⭐ 4 </small>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card property-card position-relative">
+      <span class="badge bg-light text-dark badge-fav">Guest favourite</span>
+      <img
+        src="https://imgs.search.brave.com/Sd93GdNmIkXr2KXl6SnJ7I-0RkWp6kVRishGlamwg60/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZi5i/c3RhdGljLmNvbS94/ZGF0YS9pbWFnZXMv/aG90ZWwvMjcweDIw/MC82MDM5ODM5ODUu/anBnP2s9ZTgyYTcw/YjFmNzRlZDRlYTA3/YWQzOTZjZDVmNGQ5/Mjg2MTcxNDNmZWRl/ZmZlNTkyNjEwMjRm/ZDVmMjAwMjc0MSZv/PQ"
+        class="card-img-top"
+      />
+      <div class="card-body px-0">
+        <h6 class="mb-1">Beach Bay Apartments in North Goa</h6>
+        <small class="text-muted"> ₹10,953 for 2 nights · ⭐ 5 </small>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="card property-card position-relative">
+      <span class="badge bg-light text-dark badge-fav">Guest favourite</span>
+      <img
+        src="https://imgs.search.brave.com/7P6x9Z1-3AaK4zK-6fTh2fIAEhlWJXCvSOe6YNbnDzQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS1jZG4udHJpcGFk/dmlzb3IuY29tL21l/ZGlhL3Bob3RvLW8v/MGUvMTQvMDUvZGEv/aG90ZWwtZmFjYWRl/LmpwZw"
+        class="card-img-top"
+      />
+      <div class="card-body px-0">
+        <h6 class="mb-1">Ibis Hotel</h6>
+        <small class="text-muted"> ₹7,989 for 2 nights · ⭐ 4 </small>
+      </div>
+    </div>
+  </div>
+</div>
+</a>
+<!-- Drag to scroll JS -->
+<script>
+  const slider = document.getElementById("scrollContainer");
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  slider.addEventListener("mousedown", (e) => {
+    isDown = true;
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+  });
+
+  slider.addEventListener("mouseleave", () => (isDown = false));
+  slider.addEventListener("mouseup", () => (isDown = false));
+
+  slider.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    slider.scrollLeft = scrollLeft - walk;
+  });
+</script>

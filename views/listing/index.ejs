@@ -1,0 +1,95 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+  <style>
+    #filters{
+      /* border: 2px solid red; */
+      padding-top: 2rem;
+      padding-left: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+    .filter{
+      /* border: 2px solid black; */
+      padding: 3px 7px;
+      border-radius: 10px;
+      text-align: center;
+      opacity: 0.9;
+      /* margin:auto; */
+    }
+    .filter:hover{
+      opacity: 1;
+      scale: calc(1.1);
+      cursor: pointer;
+    }
+  </style>
+  <div id="filters">
+    <div class="filter">
+      <div><i class="fa-solid fa-hotel"></i></div>
+      <p>Hotels</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-fire"></i></div>
+      <p>Tranding</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-city"></i></div>
+      <p>Iconic Cities</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-brands fa-fort-awesome"></i></div>
+      <p>Castles</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-house"></i></div>
+      <p>House</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-regular fa-snowflake"></i></div>
+      <p>Arctic</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-person-swimming"></i></div>
+      <p>Amazing Pools</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-campground"></i></div>
+      <p>Camping</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-warehouse"></i></div>
+      <p>Warehouse</p>
+    </div>
+  </div>
+    <% if (listings.length === 0) { %>
+    <p>No results found</p>
+  <% } %>
+  <div class="row g-3 mt-1 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+    <% for (let listing of listings) { %>
+    <a class="listing-link" href="/listings/<%= listing._id %>">
+      <div class="card col">
+        <img
+          src="<%= listing.image.url %>"
+          class="card-img-top"
+          alt="Listing_image"
+          loading="lazy"
+        />
+        <!-- card effects -->
+        <div class="card-img-overlay">
+          <i class="fa-regular fa-heart" style="color: #fb0404;"></i>
+        </div>
+        <div class="card-body">
+          <div class="col">
+            <p class="card-text col-10 text-truncate" >
+            <b><%= listing.title %></b>
+          </p>
+          </div>
+          <p class="m-0">
+            &#8377;<%= listing.price.toLocaleString("en-IN") %> / Night
+          </p>
+        </div>
+      </div>
+    </a>
+    <% } %>
+  </div>
+

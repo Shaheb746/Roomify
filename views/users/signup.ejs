@@ -1,0 +1,23 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<div class="row" style="display: flex; flex-direction: column; align-content: space-around">
+    <div class="col-8">
+        <h1 style="text-align: center; margin-top: 40px;">SignUp on wanderlust</h1>
+        <form action="/signup" method="POST" class="needs-validation" novalidate>
+            <div class="mb-3">
+                <label for="username" class="form-label">User Name</label>
+                <input required type="text" class="form-control" id="" name="username">
+                <div class="valid-feedback">Looks good</div>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input required type="email" class="form-control" id="" name="email" >
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input required type="password" class="form-control" id="" name="password">
+            </div>
+
+            <button type="submit" class="btn btn-danger">SignUp</button>
+        </form>
+    </div>
+</div>
