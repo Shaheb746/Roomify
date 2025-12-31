@@ -1,57 +1,5 @@
 <% layout("/layouts/boilerplate.ejs") %>
 
-<style>
-  /* horizontal scroll container */
-  .scroll-container {
-    display: flex;
-    gap: 1rem;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    padding-bottom: 10px;
-  }
-
-  /* Hide scrollbar */
-  .scroll-container::-webkit-scrollbar {
-    display: none;
-  }
-  .scroll-container {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-
-  /* Card sizing */
-  .property-card {
-    min-width: 200px;
-    border: none;
-    cursor: pointer;
-  }
-
-  .property-card img {
-    height: 180px;
-    object-fit: cover;
-    border-radius: 14px;
-  }
-
-  .badge-fav {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    z-index: 10;
-  }
-
-  /* Responsive image height */
-  .carousel-item img {
-    height: 70vh;
-    object-fit: cover;
-  }
-
-  @media (max-width: 768px) {
-    .carousel-item img {
-      height: 35vh;
-    }
-  }
-</style>
-
 <div
   id="carouselExampleDark"
   class="carousel carousel-dark slide"
@@ -247,27 +195,4 @@
   </div>
 </div>
 </a>
-<!-- Drag to scroll JS -->
-<script>
-  const slider = document.getElementById("scrollContainer");
-  let isDown = false;
-  let startX;
-  let scrollLeft;
 
-  slider.addEventListener("mousedown", (e) => {
-    isDown = true;
-    startX = e.pageX - slider.offsetLeft;
-    scrollLeft = slider.scrollLeft;
-  });
-
-  slider.addEventListener("mouseleave", () => (isDown = false));
-  slider.addEventListener("mouseup", () => (isDown = false));
-
-  slider.addEventListener("mousemove", (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - slider.offsetLeft;
-    const walk = (x - startX) * 1.5;
-    slider.scrollLeft = scrollLeft - walk;
-  });
-</script>
